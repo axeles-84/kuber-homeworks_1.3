@@ -49,3 +49,72 @@ kubectl get pods -l app=nginx-multitool
 # Создаем Service
 kubectl apply -f service_1.yaml
 kubectl get svc nginx-multitool-svc
+```
+
+### 🧪 Проверка доступа из отдельного Pod
+Для проверки используется отдельный под с утилитой `multitool` (манифест: 👉 [Открыть `multitool-pod.yaml`](./multitool-pod.yaml)).
+
+```bash
+# Запускаем тестовый под
+kubectl apply -f multitool-pod.yaml
+
+# Проверка nginx (порт 80)
+kubectl exec -it multitool-client -- curl -s http://nginx-multitool-svc:80
+
+# Проверка multitool (порт 8080)
+kubectl exec -it multitool-client -- curl -s http://nginx-multitool-svc:8080
+```
+> **Ожидаемый результат:** в ответ на оба запроса приходит HTML-страница (от `nginx` и от `multitool` соответственно).
+
+---
+
+## ⏳ Задание 2. Init-контейнер с ожиданием (`sleep 30`)
+
+### 📌 Условие
+Создать Deployment с приложением **nginx** и Init-контейнером (**busybox**), который выполняется перед запуском основного контейнера. 
+В данном варианте Init-контейнер просто «спит» 30 секунд — это демонстрирует механизм блокировки старта основного контейнера до завершения инициализации.
+
+**Манифесты:** 👉 [Открыть `deployment.yaml`](./deployment.yaml) | 👉 [Открыть `service.yaml`](./service.yaml)
+
+### 📊 Демонстрация состояний пода
+
+```bash
+# Применяем Deployment (Service пока не создаём)
+kubectl apply -f deployment.yaml
+
+# Смотрим статус пода сразу после создания
+kubectl get pods -l app=nginx
+# Ожидается: Init:0/1 (nginx ещё не запущен)
+
+# Ждём 30 секунд и наблюдаем смену статусов в реальном времени
+kubectl get pods -l app=nginx -w
+# Init:0/1 → PodInitializing → Running (1/1)
+
+# Создаем Service
+kubectl apply -f service.yaml
+kubectl get endpoints nginx-service
+```
+> **Результат:** после завершения Init-контейнера (через 30 секунд) под переходит в `Running`, а Service получает эндпоинты и становится доступным.
+
+---
+
+## 🖼️ Скриншоты выполнения
+
+### Выполнение команд в терминале
+![Выполнение команд в терминале](https://github.com/user-attachments/assets/a47ba1a5-a4ae-4e20-8d7f-9f55a1d587a3)
+
+### Веб-интерфейс Kubernetes Dashboard
+![Kubernetes Dashboard](https://github.com/user-attachments/assets/51c18dcd-4acc-45b5-b831-86939acfd371)
+
+---
+
+## 🛠️ Используемые инструменты
+
+- **Kubernetes** (MicroK8s)
+- **kubectl**
+- Образы: `nginx:1.27`, `wbitt/network-multitool`, `busybox:1.36`
+
+---
+<p align="center">
+  <i>Документ подготовлен в рамках выполнения домашнего задания.</i>
+</p>
