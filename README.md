@@ -106,7 +106,7 @@ kubectl get endpoints nginx-service
 
 ![Терминал Задание 1](./1.PNG)
 
-**Веб-интерфейс Kubernetes Dashboard:**
+***Терминал:**
 
 ![Dashboard Задание 1](./2.PNG)
 
@@ -114,7 +114,7 @@ kubectl get endpoints nginx-service
 
 ### Задание 2
 
-**Терминал (проверка статусов пода):**
+**Веб-интерфейс Kubernetes Dashboard:**
 
 ![Терминал Задание 2](./3.PNG)
 
