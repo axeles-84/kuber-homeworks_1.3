@@ -100,7 +100,7 @@ kubectl get endpoints nginx-service
 
 ## 🖼️ Скриншоты выполнения
 
-### Задание 1
+### Задание 1 и 2
 
 **Терминал (выполнение команд):**
 
@@ -112,7 +112,6 @@ kubectl get endpoints nginx-service
 
 ---
 
-### Задание 2
 
 **Веб-интерфейс Kubernetes Dashboard:**
 
