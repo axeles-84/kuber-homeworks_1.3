@@ -100,15 +100,27 @@ kubectl get endpoints nginx-service
 
 ## 🖼️ Скриншоты выполнения
 
-*(Замените `./screenshot3.png` и `./screenshot4.png` на реальные пути к вашим файлам, если загрузите их в репозиторий)*
+### Задание 1
+**Терминал (выполнение команд):**
 
-| Проверка в терминале (Задание 1) | Интерфейс Dashboard (Задание 1) |
-| :---: | :---: |
-| <img src="https://github.com/user-attachments/assets/a47ba1a5-a4ae-4e20-8d7f-9f55a1d587a3" alt="Терминал 1" width="500"> | <img src="https://github.com/user-attachments/assets/51c18dcd-4acc-45b5-b831-86939acfd371" alt="Dashboard 1" width="500"> |
+![Терминал Задание 1](https://github.com/user-attachments/assets/a47ba1a5-a4ae-4e20-8d7f-9f55a1d587a3)
 
-| Проверка в терминале (Задание 2) | Интерфейс Dashboard (Задание 2) |
-| :---: | :---: |
-| <img src="./screenshot3.png" alt="Терминал 2" width="500"> | <img src="./screenshot4.png" alt="Dashboard 2" width="500"> |
+**Веб-интерфейс Kubernetes Dashboard:**
+
+![Dashboard Задание 1](https://github.com/user-attachments/assets/51c18dcd-4acc-45b5-b831-86939acfd371)
+
+---
+
+### Задание 2
+*Чтобы картинки отобразились, загрузите их в репозиторий и укажите правильный путь вместо `./screenshot3.png`*
+
+**Терминал (проверка статусов пода):**
+
+![Терминал Задание 2](./screenshot3.png)
+
+**Веб-интерфейс Kubernetes Dashboard:**
+
+![Dashboard Задание 2](./screenshot4.png)
 
 ---
 
